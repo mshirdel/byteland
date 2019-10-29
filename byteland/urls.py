@@ -3,7 +3,6 @@ from django.urls import path, include
 from django.conf import settings
 from .views import index
 
-app_name = 'byteland'
 
 urlpatterns = [
     path('', index, name='byteland_home'),

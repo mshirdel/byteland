@@ -23,9 +23,7 @@
 </head>
 
 <body>
-    {% comment %}
-        {% include "byteland/navigation.html" %}
-    {% endcomment %}
+    {% include "byteland/navigation.html" %}
     {% include "byteland/messages.html"%}
     <main id="main-content" role="main" class="margin-top-15 container {% if LANGUAGE_BIDI %} rtl {% endif %}">
         {% block content %} {% endblock %}

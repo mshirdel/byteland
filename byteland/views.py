@@ -1,4 +1,7 @@
+from datetime import datetime
 from django.shortcuts import render
 
+
 def index(request):
-    return render(request, 'byteland/index.html')
+    return render(request, 'byteland/index.html',
+                  {'msg': 'Hurrrraaa', 'dt': datetime.now()})

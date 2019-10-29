@@ -2,7 +2,7 @@
 <!-- Navigation -->
 <div class="container">
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-    <a class="navbar-brand" href="{% url 'byteland:index' %}">
+    <a class="navbar-brand" href="{% url 'byteland_home' %}">
         {% trans 'byteland.ir' %}
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -13,34 +13,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'byteland:latest_stories' %}">
+                {% comment %} <a class="nav-link" href="{% url 'byteland:latest_stories' %}">
                     {% trans 'Newest Stories' %}
-                </a>
+                </a> {% endcomment %}
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'byteland:new_story' %}">{% trans 'New Link' %}</a>
+                {% comment %} <a class="nav-link" href="{% url 'byteland:new_story' %}">{% trans 'New Link' %}</a> {% endcomment %}
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'byteland:login' %}">{% trans 'Login' %}</a>
+                <a class="nav-link" href="{% url 'auth:login' %}">{% trans 'Login' %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'byteland:register_user' %}">{% trans 'Register' %}</a>
+                <a class="nav-link" href="{% url 'auth:register_user' %}">{% trans 'Register' %}</a>
             </li>
             {% endif %}
 
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'byteland:profile'%}">{% trans 'Profile' %}</a>
+                {% comment %} <a class="nav-link" href="{% url 'byteland:profile'%}">{% trans 'Profile' %}</a> {% endcomment %}
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'byteland:logout' %}">{% trans 'Log out' %}</a>
+                <a class="nav-link" href="{% url 'auth:logout' %}">{% trans 'Log out' %}</a>
             </li>
             {% endif %}
         </ul>
-        {% include 'byteland/search.html'%}
+        {% comment %} {% include 'byteland/search.html'%} {% endcomment %}
     </div>
 </nav>
 </div>

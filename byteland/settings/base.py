@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.postgres',
     'django_jalali',
+    'byteland.authentication',
     'django.contrib.admin',
     'taggit',
     'webpack_loader',
     'sorl.thumbnail',
     'rest_framework',
-    'byteland.authentication',
+
 ]
 
 WEBPACK_LOADER = {
