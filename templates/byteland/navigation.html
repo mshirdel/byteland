@@ -1,0 +1,46 @@
+{% load i18n %}
+<!-- Navigation -->
+<div class="container">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <a class="navbar-brand" href="{% url 'byteland:index' %}">
+        {% trans 'byteland.ir' %}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'byteland:latest_stories' %}">
+                    {% trans 'Newest Stories' %}
+                </a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'byteland:new_story' %}">{% trans 'New Link' %}</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'byteland:login' %}">{% trans 'Login' %}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'byteland:register_user' %}">{% trans 'Register' %}</a>
+            </li>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'byteland:profile'%}">{% trans 'Profile' %}</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'byteland:logout' %}">{% trans 'Log out' %}</a>
+            </li>
+            {% endif %}
+        </ul>
+        {% include 'byteland/search.html'%}
+    </div>
+</nav>
+</div>

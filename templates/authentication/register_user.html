@@ -1,0 +1,19 @@
+{% extends 'byteland/base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Register User" %}{% endblock %}
+{% block content %}
+{% include 'byteland/render_form_errors.html' %}
+<div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+            <div class="card-body">
+                <h5 class="card-title text-center custom-color">{% trans "Sign Up" %}</h5>
+                <form method="POST" action="{% url 'auth:register_user' %}">
+                    {% include 'byteland/render_form.html' with form=form %}
+                    <button class="btn btn-success btn-block" type="submit">{% trans "Register" %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
