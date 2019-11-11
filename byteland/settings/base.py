@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    # 'byteland.authentication.EmailAuthBackend',
+    'byteland.authentication.backends.EmailAuthBackend',
 ]
 
 
@@ -133,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = '/'
 # LOGIN_URL = 'login'
 # LOGOUT_URL = 'logout/'
 
@@ -151,4 +151,8 @@ REST_FRAMEWORK = {
     # ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
+}
+
+BYTELAND = {
+    'INFO_EMAIL': 'info@byteland.ir',
 }

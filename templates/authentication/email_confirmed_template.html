@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}To activate your Byteland Account, please verify your email address.
+Your account will not be activated until your email address is confirmed.{% endblocktrans %}
+
+{% trans "Confirm your email with this link:" %}
+{% block reset_link %}
+{{ protocol }}://{{ domain }}{% url 'auth:account_activation_confirm' uidb64=uid token=token %}
+{% endblock %}
+
+{% trans "Thanks for using our site!" %}
+
+{% blocktrans %}The {{ site_name }} team{% endblocktrans %}
+
+{% endautoescape %}

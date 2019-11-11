@@ -1,0 +1,14 @@
+{% extends 'byteland/base.html' %}
+{% load i18n %}
+{% block title %}
+    {% trans "Email Activation" %}
+{% endblock title %}
+{% block content %}
+    <h2>{{ msg }}</h2>
+    {% if show_login %}
+        <a href="{% url 'auth:login' %}">{% trans "Login" %}</a>
+    {% endif %}
+    {% if show_resend_activation_code %}
+        <a href="{% url 'auth:resend_email_activation' %}">{% trans "Resend Email" %}</a>
+    {% endif %}
+{% endblock content %}

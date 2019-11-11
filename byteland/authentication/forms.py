@@ -1,7 +1,8 @@
 from django import forms
-from django.conf import settings
 from django.utils.translation import gettext as _
+
 from .models import User
+
 
 class RegisterUserForm(forms.ModelForm):
     password = forms.CharField(label=_('Password'),
@@ -34,3 +35,9 @@ class RegisterUserForm(forms.ModelForm):
                 raise forms.ValidationError('Email address must be unique')
         except User.DoesNotExist:
             return email
+
+
+class ResendEmailActivationForm(forms.Form):
+    email = forms.EmailField(label=_('Email'),
+                                     widget=forms.EmailInput(
+                                         attrs={'class': 'form-control'}))
