@@ -1,0 +1,40 @@
+{% extends 'byteland/base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% load i18n %}
+{% load jformat %}
+{% block content %}
+
+<div class="margin-top-15">
+    <div class="row">
+        <div class="col-md-4">
+            {% if user.profile.photo %}
+                {% thumbnail user.profile.photo '150x150' crop="center" as im %}
+                    <img src="{{ im.url }}" alt="{{ user.username }}" class="mx-auto d-block img-thumbnail profile-img">
+                {% endthumbnail %}
+            {% else %}
+                <img src="{% static 'user_profile/img/profile.jpg' %}" alt="{{ user.username }}"
+                    class="mx-auto d-block img-thumbnail profile-img default-profile-img">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            
+                <div class="row">
+                    <div class="col-md-12">
+                        {% trans 'Username:' %} <span>{{ user.username }}</span> <br>
+                        {% trans 'Full name:' %} <span>{{ user.first_name }} {{ user.last_name }}</span> <br>
+                    </div>
+                </div>
+            <br>
+                <a href="{% url 'auth:password_change' %}">{% trans 'Change password' %}</a> |
+                <a href="{% url 'user_profile:profile_edit' %}">{% trans 'Edit Profile' %}</a>
+            
+        </div>
+    </div>
+</div>
+<div class="margin-top-50">
+    <h1>{% trans "Your stoies" %} ({{ stories.count }})</h1>
+    <hr>
+    {% comment %} {% include 'story/list.html' with campact=True%} {% endcomment %}
+</div>
+{% endblock %}

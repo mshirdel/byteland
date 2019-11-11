@@ -8,6 +8,8 @@ from django.utils.http import urlsafe_base64_decode
 from django.utils.translation import gettext as _
 from django.views import View
 
+from byteland.user_profile.models import Profile
+
 from .forms import RegisterUserForm, ResendEmailActivationForm
 from .models import User
 from .tokens import user_email_activation_token
@@ -28,9 +30,8 @@ class JoinUserView(View):
             new_user.save()
             send_activation_email(request, new_user)
 
-            # TODO add profile app
-            # profile = Profile.objects.create(user=new_user)
-            # profile.send_activation_code(request)
+            profile = Profile.objects.create(user=new_user)
+            
             messages.success(request,
                              _('Successfully created your account. \
                                 for activating it check your email'))
@@ -53,7 +54,7 @@ class UserEmailActivationView(View):
             user.is_active = True
             user.save()
             messages.success(request, _(
-                'Yout email has been verified. You can login now'))
+                'Your email has been verified. You can login now'))
             return render(request, 'authentication/email_activation.html', {
                 'show_login': True
             })

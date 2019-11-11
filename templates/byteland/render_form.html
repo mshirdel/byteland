@@ -1,4 +1,5 @@
 {% csrf_token %}
+{% include 'byteland/render_form_errors.html' %}
 {% for field in form %}
     <div class="form-group">
         {{ field.errors}}

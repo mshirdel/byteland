@@ -39,5 +39,30 @@ class RegisterUserForm(forms.ModelForm):
 
 class ResendEmailActivationForm(forms.Form):
     email = forms.EmailField(label=_('Email'),
-                                     widget=forms.EmailInput(
-                                         attrs={'class': 'form-control'}))
+                             widget=forms.EmailInput(
+        attrs={'class': 'form-control'}))
+
+
+class EditUserForm(forms.ModelForm):
+    username = forms.CharField(disabled=True,
+                               label='Username',
+                               widget=forms.TextInput(
+                                   attrs={'class': 'form-control'}))
+
+    class Meta():
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+        }
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        email_exist = User.objects.filter(email=email).exclude(username=username)
+        if email and email_exist:
+            raise forms.ValidationError('Email address must be unique')
+        else:
+            return email

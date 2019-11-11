@@ -90,15 +90,15 @@ db.sqlite3
 
 .passwords
 Accounting/__pycache__/
-hesabketab/__pycache__/
+byteland/__pycache__/
 .vscode
-hesabketab/__pycache__/*.pyc
+byteland/__pycache__/*.pyc
 *.csv
 .vscode/
 .idea/
 set_env.py
-heatblast/settings/development.py
-heatblast/media/
+byteland/settings/development.py
+byteland/media/
 node_modules/
 assets/bundles/
 *.kdev4

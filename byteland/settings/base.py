@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'webpack_loader',
     'sorl.thumbnail',
     'rest_framework',
-
+    'byteland.user_profile',
+    'byteland.story',
 ]
 
 WEBPACK_LOADER = {
@@ -133,9 +134,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = '/'
-# LOGIN_URL = 'login'
-# LOGOUT_URL = 'logout/'
+LOGIN_REDIRECT_URL = 'user_profile:profile'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
 
 PAGE_SIZE = 20
 
