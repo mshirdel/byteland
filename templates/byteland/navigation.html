@@ -19,7 +19,7 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                {% comment %} <a class="nav-link" href="{% url 'byteland:new_story' %}">{% trans 'New Link' %}</a> {% endcomment %}
+                <a class="nav-link" href="{% url 'story:new_story' %}">{% trans 'New Link' %}</a>
             </li>
             {% else %}
             <li class="nav-item">

@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('byteland.authentication.urls')),
     path('profile/', include('byteland.user_profile.urls')),
+    path('story/', include('byteland.story.urls')),
 ]
 
 if settings.DEBUG:

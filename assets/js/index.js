@@ -19,12 +19,12 @@ $("document").ready(function () {
   });
 
   $("#btnFetchTitle").click(function () {
-    if ($("#id_url").val()) {
+    if ($("#id_story_url").val()) {
       $.ajax({
         type: "GET",
-        url: "fetch_title",
+        url: "/story/fetch_title",
         data: {
-          url: $("#id_url").val()
+          url: $("#id_story_url").val()
         }
       })
         .done(function (data) {
