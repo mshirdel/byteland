@@ -5,6 +5,7 @@ from .views import (NewStory, fetch_title, TopStoryListView,
                     EditStory, ShowStory, story_search,
                     upvote_story, downvote_stroy)
 from byteland.views import sudo_view
+from .feeds import LatesStoryFeed
 
 app_name = 'story'
 
@@ -18,4 +19,5 @@ urlpatterns = [
     path('by/domain/', ByDomainStoryListView.as_view(), name="stories_by_domain"),
     path('latest/', LatestStoryListView.as_view(), name="latest_stories"),
     path('search/', story_search, name="story_search"),
+    path('feed/', LatesStoryFeed(), name="story_feed"),
 ]

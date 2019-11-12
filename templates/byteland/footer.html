@@ -1,5 +1,6 @@
+{% load i18n %}
 <div id="footer">
     <div class="container">
-        <p class="footer-block"><a href="{% url 'byteland:story_feed' %}">Site Feeds</a></p>
+        <p class="footer-block"><a href="{% url 'story:story_feed' %}">{% trans "Site Feeds" %}</a></p>
     </div>
 </div>
