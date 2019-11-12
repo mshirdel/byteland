@@ -22,3 +22,7 @@ class StoryCommentForm(forms.ModelForm):
         widgets = {
             'story_comment': forms.Textarea(attrs={'class': 'form-control'})
         }
+
+
+class SearchForm(forms.Form):
+    q = forms.CharField()

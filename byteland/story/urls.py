@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (NewStory, fetch_title, TopStoryListView,
                     LatestStoryListView, ByDomainStoryListView,
-                    EditStory, ShowStory,
+                    EditStory, ShowStory, story_search,
                     upvote_story, downvote_stroy)
 from byteland.views import sudo_view
 
@@ -16,5 +16,6 @@ urlpatterns = [
     path('down/<int:id>/', downvote_stroy, name="downvote_story"),
     path('up/<int:id>/', upvote_story, name="upvote_story"),
     path('by/domain/', ByDomainStoryListView.as_view(), name="stories_by_domain"),
-    path('latest/', LatestStoryListView.as_view(), name="latest_stories")
+    path('latest/', LatestStoryListView.as_view(), name="latest_stories"),
+    path('search/', story_search, name="story_search"),
 ]

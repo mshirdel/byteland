@@ -1,0 +1,28 @@
+{% extends 'byteland/base.html' %}
+{% load i18n %}
+{% block title%} Search Result {% endblock %}
+{% block content %}
+    {% if query %}
+        <div class="row">
+            <div class="col-md-12">
+                <p>{% trans "Found" %} {{ results.count }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% for story in results %}
+                    <a href="{{ story.get_absolute_url }}">{{ story.title }}</a>
+                    <hr>
+                {% empty %}
+                    <p>Nothing :)</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-md-12">
+                {% include 'story/search.html' with q=query %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
