@@ -1,13 +1,17 @@
+from django.contrib.sitemaps.views import sitemap
 from django.urls import path
 
-from .views import (NewStory, fetch_title, TopStoryListView,
-                    LatestStoryListView, ByDomainStoryListView,
-                    EditStory, ShowStory, story_search,
-                    upvote_story, downvote_stroy)
-from byteland.views import sudo_view
 from .feeds import LatesStoryFeed
+from .sitemaps import StorySitemap
+from .views import (ByDomainStoryListView, EditStory, LatestStoryListView,
+                    NewStory, ShowStory, TopStoryListView, downvote_stroy,
+                    fetch_title, story_search, upvote_story)
 
 app_name = 'story'
+
+sitemaps = {
+    'stories': StorySitemap
+}
 
 urlpatterns = [
     path('new/', NewStory.as_view(), name="new_story"),
@@ -20,4 +24,6 @@ urlpatterns = [
     path('latest/', LatestStoryListView.as_view(), name="latest_stories"),
     path('search/', story_search, name="story_search"),
     path('feed/', LatesStoryFeed(), name="story_feed"),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.view.sitemap'),
 ]

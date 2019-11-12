@@ -125,7 +125,7 @@ msgstr "جدید‌ترین‌ها"
 
 #: templates/byteland/navigation.html:22
 msgid "New Link"
-msgstr "جدید"
+msgstr "ایجاد"
 
 #: templates/byteland/navigation.html:29
 msgid "Sign up"
