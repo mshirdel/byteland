@@ -8,8 +8,11 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView
 from django.conf import settings
+from django.db.models import Count
+from django.contrib import messages
+from django.utils.translation import gettext as _
 
-from .forms import StoryForm
+from .forms import StoryForm, StoryCommentForm
 from .models import Story, StoryPoint
 
 
@@ -74,6 +77,7 @@ def downvote_stroy(request, id):
         pass
     return HttpResponseRedirect(result_url)
 
+
 class BaseStoryListView(ListView):
     queryset = Story.stories.order_by('-number_of_votes')
     context_object_name = 'stories'
@@ -98,7 +102,8 @@ class TopStoryListView(BaseStoryListView):
 class LatestStoryListView(BaseStoryListView):
     def get_queryset(self):
         return Story.stories.order_by('-created')
-    
+
+
 class ByDomainStoryListView(BaseStoryListView):
     def get_queryset(self):
         query_set = super().get_queryset()
@@ -106,7 +111,7 @@ class ByDomainStoryListView(BaseStoryListView):
             url = self.request.GET.get('url')
             return query_set.filter(url_domain_name=url)
         return query_set
-    
+
 
 @method_decorator(login_required, name='dispatch')
 class EditStory(View):
@@ -125,3 +130,37 @@ class EditStory(View):
         else:
             return render(request, 'story/edit.html',
                           {'form': form, 'id': id})
+
+
+class ShowStory(View):
+    def get(self, request, id):
+        story = get_object_or_404(Story, pk=id)
+        story_comment_form = StoryCommentForm()
+        return render(request, 'story/show.html',
+                      {
+                          'story': story,
+                          'form': story_comment_form
+                      })
+
+    def post(self, request, id):
+        story = get_object_or_404(Story, pk=id)
+        if request.user.is_authenticated:
+            form = StoryCommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.commenter = request.user
+                comment.story = story
+                comment.save()
+                return render(request, 'story/show.html',
+                              {'story': story, 'form': StoryCommentForm})
+            else:
+                return render(request, 'story/show.html',
+                              {'story': story, 'form': form})
+        else:
+            form = StoryCommentForm()
+            messages.add_message(request,
+                                 messages.WARNING,
+                                 _('Please Register to site for commenting')
+                                 )
+            return render(request, 'story/show.html',
+                          {'story': story, 'form': form})
