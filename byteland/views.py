@@ -2,6 +2,5 @@ from datetime import datetime
 from django.shortcuts import render
 
 
-def index(request):
-    return render(request, 'byteland/index.html',
-                  {'msg': str(request.META['REMOTE_ADDR']), 'dt': datetime.now()})
+def sudo_view(request, *args, **kwargs):
+    return render(request, 'byteland/not_implemented.html')

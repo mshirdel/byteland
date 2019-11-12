@@ -13,9 +13,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                {% comment %} <a class="nav-link" href="{% url 'byteland:latest_stories' %}">
+                <a class="nav-link" href="{% url 'story:latest_stories' %}">
                     {% trans 'Newest Stories' %}
-                </a> {% endcomment %}
+                </a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">

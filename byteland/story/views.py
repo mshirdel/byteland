@@ -1,13 +1,16 @@
 import requests
 from bs4 import BeautifulSoup
-from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.views import View
-from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.generic import ListView
+from django.conf import settings
 
 from .forms import StoryForm
+from .models import Story, StoryPoint
 
 
 @method_decorator(login_required, name='dispatch')
@@ -42,3 +45,65 @@ def fetch_title(request):
             return JsonResponse({'error': 'fetch title not work'})
     else:
         return JsonResponse({'error': 'url not found'})
+
+
+@login_required()
+def upvote_story(request, id):
+    result_url = '/'
+    if request.GET.get('page'):
+        result_url = f"/?page={request.GET.get('page')}"
+    story = get_object_or_404(Story, pk=id)
+    try:
+        StoryPoint.objects.get(user=request.user, story=story)
+        return HttpResponseRedirect(result_url)
+    except StoryPoint.DoesNotExist:
+        story_point = StoryPoint(user=request.user, story=story)
+        story_point.save()
+        return HttpResponseRedirect(result_url)
+
+
+@login_required()
+def downvote_stroy(request, id):
+    result_url = '/'
+    if request.GET.get('page'):
+        result_url = f"/?page={request.GET.get('page')}"
+    try:
+        story_point = StoryPoint.objects.get(user=request.user, story_id=id)
+        story_point.delete()
+    except StoryPoint.DoesNotExist:
+        pass
+    return HttpResponseRedirect(result_url)
+
+class BaseStoryListView(ListView):
+    queryset = Story.stories.order_by('-number_of_votes')
+    context_object_name = 'stories'
+    paginate_by = settings.PAGE_SIZE
+    template_name = 'story/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        voted_story_ids = []
+        if self.request.user.is_authenticated:
+            for point in self.request.user.storypoint_set.all():
+                voted_story_ids.append(point.story_id)
+        context['voted_story_id'] = voted_story_ids
+        return context
+
+
+class TopStoryListView(BaseStoryListView):
+    def get_queryset(self):
+        return Story.stories.order_by('-number_of_votes')
+
+
+class LatestStoryListView(BaseStoryListView):
+    def get_queryset(self):
+        return Story.stories.order_by('-created')
+    
+class ByDomainStoryListView(BaseStoryListView):
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        if self.request.GET.get('url'):
+            url = self.request.GET.get('url')
+            return query_set.filter(url_domain_name=url)
+        return query_set
+    

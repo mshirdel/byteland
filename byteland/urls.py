@@ -2,11 +2,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import index
+from byteland.story.views import TopStoryListView
 
 
 urlpatterns = [
-    path('', index, name='byteland_home'),
+    path('', TopStoryListView.as_view(), name='byteland_home'),
     path('admin/', admin.site.urls),
     path('auth/', include('byteland.authentication.urls')),
     path('profile/', include('byteland.user_profile.urls')),

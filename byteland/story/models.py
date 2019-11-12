@@ -52,7 +52,7 @@ class Story(TimeStampedModel):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("socialnews:show_story", args=[self.id])
+        return reverse("story:show_story", args=[self.id])
 
 
 class StoryComment(TimeStampedModel):

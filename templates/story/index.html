@@ -1,0 +1,6 @@
+{% extends 'byteland/base.html'%}
+{% load i18n %}
+{% block title%} {% trans "Heatblast - Social News" %} {% endblock %}
+{% block content %}
+    {% include 'story/list.html' %}
+{% endblock %}

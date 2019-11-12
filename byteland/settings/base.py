@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'webpack_loader',
     'sorl.thumbnail',
     'rest_framework',
+    'byteland.core',
     'byteland.user_profile',
     'byteland.story',
 ]
