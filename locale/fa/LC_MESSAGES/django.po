@@ -309,7 +309,7 @@ msgstr "نام کاربری"
 
 #: templates/user_profile/profile.html:25
 msgid "Full name:"
-msgstr "نام"
+msgstr "نام:"
 
 #: templates/user_profile/profile.html:30
 msgid "Edit Profile"
@@ -317,4 +317,4 @@ msgstr "ویرایش"
 
 #: templates/user_profile/profile.html:36
 msgid "Your stoies"
-msgstr "شما ایجاد کرده‌اید:"
+msgstr "داستانهایی که شما ایجاد کرده‌اید:"

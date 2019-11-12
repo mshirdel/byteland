@@ -7,7 +7,7 @@
             {% else %}
                 <a href="{{ story.get_absolute_url }}" class="story-link">{{story.title}}</a>
             {% endif %}
-            {% if campact %}
+            {% if profile %}
                 <a href="{% url 'story:edit_story' story.id %}">{% trans "Edit" %}</a> |
                 <a href="{{ story.get_absolute_url }}">{% trans "Comments" %}
                     {{ story.number_of_comments }}
@@ -15,7 +15,7 @@
             {% endif %}
         </div>
     </div>
-    {% if not campact %}
+    {% if not profile %}
         <div class="row font-size-12 color-dimgray">
             <div class="col-md-12">
                 {{ story.number_of_votes }} {% trans "points" %}

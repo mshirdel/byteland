@@ -32,7 +32,10 @@ class ProfileView(View):
 
         return render(request,
                       'user_profile/profile.html',
-                      {"stories": stories})
+                      {
+                          "stories": stories,
+                          "user_stories_count": user_stories.count()}
+                      )
 
 
 @method_decorator(login_required, name='dispatch')
