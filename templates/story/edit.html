@@ -1,0 +1,12 @@
+{% extends 'byteland/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row margin-top-15">
+        <div class="col-md-12">
+            <form action="{% url 'story:edit_story' id %}" method="POST">
+                {% include 'story/item_form.html' with form=form %}
+                <button type="submit" class="btn btn-primary mt-2">{% trans "Edit" %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

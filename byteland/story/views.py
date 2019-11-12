@@ -107,3 +107,21 @@ class ByDomainStoryListView(BaseStoryListView):
             return query_set.filter(url_domain_name=url)
         return query_set
     
+
+@method_decorator(login_required, name='dispatch')
+class EditStory(View):
+    def get(self, request, id):
+        story = get_object_or_404(Story, pk=id)
+        form = StoryForm(instance=story)
+        return render(request, 'story/edit.html',
+                      {'form': form, 'id': id})
+
+    def post(self, request, id):
+        story = get_object_or_404(Story, pk=id)
+        form = StoryForm(request.POST, instance=story)
+        if form.is_valid():
+            story.save()
+            return HttpResponseRedirect('/')
+        else:
+            return render(request, 'story/edit.html',
+                          {'form': form, 'id': id})

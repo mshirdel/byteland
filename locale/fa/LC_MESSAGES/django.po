@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-12 14:24+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/authentication/email_activation.html:4
+msgid "Email Activation"
+msgstr ""
+
+#: templates/authentication/email_activation.html:9
+msgid "Login"
+msgstr ""
+
+#: templates/authentication/email_activation.html:12
+msgid "Resend Email"
+msgstr ""
+
+#: templates/authentication/email_confirmed_subject.txt:2
+#, python-format
+msgid "Confirm your email for %(site_name)s"
+msgstr ""
+
+#: templates/authentication/email_confirmed_template.html:2
+msgid ""
+"To activate your Byteland Account, please verify your email address.\n"
+"Your account will not be activated until your email address is confirmed."
+msgstr ""
+
+#: templates/authentication/email_confirmed_template.html:5
+msgid "Confirm your email with this link:"
+msgstr ""
+
+#: templates/authentication/email_confirmed_template.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: templates/authentication/email_confirmed_template.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: templates/authentication/login.html:3
+msgid "Log in to HeatBlast - Social News"
+msgstr ""
+
+#: templates/authentication/login.html:14
+msgid "Please login to see this page."
+msgstr ""
+
+#: templates/authentication/login.html:23
+msgid "Sign In"
+msgstr ""
+
+#: templates/authentication/login.html:31
+msgid "Email or Username"
+msgstr ""
+
+#: templates/authentication/login.html:38
+msgid "Password"
+msgstr ""
+
+#: templates/authentication/login.html:44
+msgid "Remember password"
+msgstr ""
+
+#: templates/authentication/login.html:47 templates/byteland/navigation.html:26
+msgid "Sign in"
+msgstr ""
+
+#: templates/authentication/login.html:51
+#: templates/registration/password_reset_form.html:10
+msgid "Forgotten your password?"
+msgstr ""
+
+#: templates/authentication/login.html:56
+msgid "Join"
+msgstr ""
+
+#: templates/authentication/register_user.html:3
+msgid "Register User"
+msgstr ""
+
+#: templates/authentication/register_user.html:10
+msgid "Sign Up"
+msgstr ""
+
+#: templates/authentication/register_user.html:13
+msgid "Register"
+msgstr ""
+
+#: templates/authentication/resend_email_activation_code.html:4
+msgid "Resend Email Activation Code"
+msgstr ""
+
+#: templates/authentication/resend_email_activation_code.html:11
+msgid "Resend"
+msgstr ""
+
+#: templates/authentication/resend_email_activation_code.html:15
+msgid "Send"
+msgstr ""
+
+#: templates/byteland/navigation.html:6
+msgid "byteland.ir"
+msgstr ""
+
+#: templates/byteland/navigation.html:17
+msgid "Newest Stories"
+msgstr "جدید‌ترین‌ها"
+
+#: templates/byteland/navigation.html:22
+msgid "New Link"
+msgstr "جدید"
+
+#: templates/byteland/navigation.html:29
+msgid "Sign up"
+msgstr "ثبت نام"
+
+#: templates/byteland/navigation.html:35
+msgid "Profile"
+msgstr "پروفایل"
+
+#: templates/byteland/navigation.html:39
+msgid "Log out"
+msgstr "خروج"
+
+#: templates/byteland/pagination.html:6 templates/byteland/pagination.html:10
+msgid "Previous"
+msgstr "قبلی"
+
+#: templates/byteland/pagination.html:28 templates/byteland/pagination.html:32
+msgid "Next"
+msgstr "بعدی"
+
+#: templates/registration/password_change_done.html:3
+msgid "password change done"
+msgstr ""
+
+#: templates/registration/password_change_done.html:10
+msgid "Password changed"
+msgstr ""
+
+#: templates/registration/password_change_done.html:11
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: templates/registration/password_change_form.html:3
+#: templates/user_profile/profile.html:29
+msgid "Change password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:10
+msgid "Change your password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:11
+msgid "Use the form below to change your password"
+msgstr ""
+
+#: templates/registration/password_change_form.html:14
+msgid "Change"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:3
+msgid "Password reset"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:9
+msgid "Password set"
+msgstr ""
+
+#: templates/registration/password_reset_complete.html:11
+#, python-format
+msgid ""
+"\n"
+"                <p>Your password has been set. You can\n"
+"                    <a href=\"%(login_url)s\">log in now</a>\n"
+"                </p>\n"
+"                "
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:3
+#: templates/registration/password_reset_confirm.html:9
+#: templates/registration/password_reset_done.html:3
+#: templates/registration/password_reset_done.html:9
+#: templates/registration/password_reset_form.html:3
+msgid "Reset your password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:11
+msgid "Please enter your new password twice:"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:14
+msgid "Change my password"
+msgstr ""
+
+#: templates/registration/password_reset_done.html:10
+msgid "We've emaild you instructions for setting your password."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:11
+msgid ""
+"If you don't recieve an email, please make sure you've entered the address "
+"you registered with."
+msgstr ""
+
+#: templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"\n"
+"Someone asked for password reset for email %(email)s. Follow the link "
+"below:\n"
+msgstr ""
+
+#: templates/registration/password_reset_email.html:6
+msgid "Your username, is case you've forgotten:"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:9
+msgid "Reset Password"
+msgstr ""
+
+#: templates/registration/password_reset_form.html:11
+msgid "Enter your e-mail address to obrain a new password."
+msgstr ""
+
+#: templates/registration/password_reset_form.html:14
+msgid "Send e-mail"
+msgstr ""
+
+#: templates/story/index.html:3
+msgid "Heatblast - Social News"
+msgstr ""
+
+#: templates/story/item_form.html:10
+msgid "Fetch Title"
+msgstr ""
+
+#: templates/story/list.html:11 templates/story/list.html:25
+#: templates/user_profile/edit.html:13
+msgid "Edit"
+msgstr "ویرایش"
+
+#: templates/story/list.html:12 templates/story/list.html:27
+msgid "Comments"
+msgstr "گفتگو"
+
+#: templates/story/list.html:21
+msgid "points"
+msgstr "امتیاز"
+
+#: templates/story/list.html:22
+msgid "by"
+msgstr "توسط"
+
+#: templates/story/list.html:23
+msgid "in"
+msgstr "در"
+
+#: templates/story/list.html:23
+msgid "before"
+msgstr "قبل"
+
+#: templates/story/list.html:33
+msgid "Down Vote"
+msgstr "نپسندیدم"
+
+#: templates/story/list.html:37
+msgid "Vote"
+msgstr "پسندیدم"
+
+#: templates/story/new.html:9
+msgid ""
+"Leave url blank to submit a question for discussion. If there is no url, the "
+"text (if any) will appear at the top of the thread."
+msgstr ""
+
+#: templates/story/new.html:13
+msgid "Publish"
+msgstr ""
+
+#: templates/user_profile/edit.html:3
+msgid "Edit profile of"
+msgstr "ویرایش پروفایل کاربر"
+
+#: templates/user_profile/edit.html:9
+msgid "Edit Profile of"
+msgstr "ویرایش پروفایل کاربر"
+
+#: templates/user_profile/profile.html:24
+msgid "Username:"
+msgstr "نام کاربری"
+
+#: templates/user_profile/profile.html:25
+msgid "Full name:"
+msgstr "نام"
+
+#: templates/user_profile/profile.html:30
+msgid "Edit Profile"
+msgstr "ویرایش"
+
+#: templates/user_profile/profile.html:36
+msgid "Your stoies"
+msgstr "شما ایجاد کرده‌اید:"

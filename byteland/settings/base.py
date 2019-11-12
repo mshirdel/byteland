@@ -158,3 +158,7 @@ REST_FRAMEWORK = {
 BYTELAND = {
     'INFO_EMAIL': 'info@byteland.ir',
 }
+
+LOCALE_PATHS = (
+    PROJECT_ROOT + '/byteland/locale', 
+    PROJECT_ROOT + '/locale', )

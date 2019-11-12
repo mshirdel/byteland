@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-12 14:24+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: byteland/authentication/forms.py:8
+msgid "Password"
+msgstr "کلمه عبور"
+
+#: byteland/authentication/forms.py:11
+msgid "Reapet password"
+msgstr "تکرار کلمه عبور"
+
+#: byteland/authentication/forms.py:41
+msgid "Email"
+msgstr ""
+
+#: byteland/authentication/views.py:36
+msgid ""
+"Successfully created your account.                                 for "
+"activating it check your email"
+msgstr ""
+
+#: byteland/authentication/views.py:57
+msgid "Your email has been verified. You can login now"
+msgstr ""
+
+#: byteland/authentication/views.py:63
+msgid "There was problem for activation email."
+msgstr ""
+
+#: byteland/authentication/views.py:84
+msgid "Please check your email. We sent an activation link"
+msgstr ""
+
+#: byteland/authentication/views.py:88
+msgid "Yout email has been verified before."
+msgstr ""
+
+#: byteland/authentication/views.py:92
+#, python-brace-format
+msgid "There is not any user with this email: {email_for_activation}."
+msgstr ""
+
+#: byteland/authentication/views.py:95
+msgid "Please enter your email"
+msgstr ""
+
+#: byteland/story/models.py:20
+msgid "title"
+msgstr ""
+
+#: byteland/story/models.py:22
+msgid "url"
+msgstr ""
+
+#: byteland/story/models.py:24
+msgid "sotry body text (use markdown)"
+msgstr ""
