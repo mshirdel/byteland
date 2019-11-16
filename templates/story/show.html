@@ -52,7 +52,7 @@
                         {{ comment.commenter.profile }}
                         {{ comment.created.togregorian|timesince }}
                         {% trans "before" %}</span>
-                    <p>{{ comment.story_comment }}</p>
+                    <p>{{ comment.story_comment|markdown }}</p>
                 </div>
                 
             </div>
