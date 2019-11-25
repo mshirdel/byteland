@@ -5,7 +5,9 @@ from .feeds import LatesStoryFeed
 from .sitemaps import StorySitemap
 from .views import (ByDomainStoryListView, EditStory, LatestStoryListView,
                     NewStory, ShowStory, TopStoryListView, downvote_stroy,
-                    fetch_title, story_search, upvote_story)
+                    fetch_title, story_search, upvote_story, story_delete)
+from byteland.core.views import sudo_view
+
 
 app_name = 'story'
 
@@ -16,6 +18,7 @@ sitemaps = {
 urlpatterns = [
     path('new/', NewStory.as_view(), name="new_story"),
     path('<int:id>/', ShowStory.as_view(), name="show_story"),
+    path('remove/<int:id>/<page>/', story_delete, name="remove_story"),
     path('fetch_title/', fetch_title, name="fetch_title"),
     path('edit/<int:id>/', EditStory.as_view(), name="edit_story"),
     path('down/<int:id>/', downvote_stroy, name="downvote_story"),

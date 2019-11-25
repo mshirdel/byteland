@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from django.utils.translation import gettext as _
 from django.views import View
 from django.views.generic import ListView
+from django.urls import reverse
 
 from .forms import SearchForm, StoryCommentForm, StoryForm
 from .models import Story, StoryPoint
@@ -176,7 +177,8 @@ def story_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             query = form.cleaned_data['q']
-            search_vector = SearchVector('title', 'story_body_text', 'story_url')
+            search_vector = SearchVector(
+                'title', 'story_body_text', 'story_url')
             search_query = SearchQuery(query)
             results = Story.stories.annotate(
                 search=search_vector,
@@ -184,3 +186,12 @@ def story_search(request):
             ).filter(search=search_query).order_by('-rank')
     context = {'query': query, 'results': results}
     return render(request, 'story/search_result.html', context)
+
+
+def story_delete(request, id, page):
+    story = get_object_or_404(Story, pk=id)
+    story.delete()
+    if page == 'profile':
+        return HttpResponseRedirect(reverse('user_profile:profile'))
+    else:
+        return HttpResponseRedirect('/')

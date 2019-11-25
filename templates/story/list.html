@@ -11,7 +11,8 @@
                 <a href="{% url 'story:edit_story' story.id %}">{% trans "Edit" %}</a> |
                 <a href="{{ story.get_absolute_url }}">{% trans "Comments" %}
                     {{ story.number_of_comments }}
-                </a>
+                </a> |
+                {% include "story/story_delete_modal.html" with story_id=story.id %}
             {% endif %}
         </div>
     </div>

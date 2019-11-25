@@ -7,7 +7,7 @@
 
 <div class="margin-top-15">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="row">
                 <div class="col-md-12">
                     {% if user.profile.photo %}
@@ -19,38 +19,21 @@
                             class="mx-auto d-block img-thumbnail profile-img default-profile-img">
                     {% endif %}
                 </div>
-            </div> 
+            </div>
             <hr>
             <div class="row justify-content-center">
-                <div class="col-md-3">
-                    <span>{{ user.username }}</span>
+                <div class="col-md-12">
+                    {{ user.username }} <br>
+                    <a href="{% url 'auth:password_change' %}">{% trans 'Change password' %}</a><br>
+                    <a href="{% url 'user_profile:profile_edit' %}">{% trans 'Edit Profile' %}</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'auth:password_change' %}">{% trans 'Change password' %}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'user_profile:profile_edit' %}">{% trans 'Edit Profile' %}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="" class="nav-link">
-                                {{ user.first_name }} {{ user.last_name }}
-                            </a> 
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="col-md-9">
+            <h1>{% trans "Your stoies" %} ({{ user_stories_count }})</h1>
+            <hr>
+            {% include 'story/list.html' with profile=True%}
         </div>
     </div>
-</div>
-<div class="margin-top-50">
-    <h1>{% trans "Your stoies" %} ({{ user_stories_count }})</h1>
-    <hr>
-    {% include 'story/list.html' with profile=True%}
 </div>
 {% endblock %}
