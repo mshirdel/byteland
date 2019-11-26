@@ -12,8 +12,8 @@ from byteland.user_profile.models import Profile
 
 from .forms import RegisterUserForm, ResendEmailActivationForm
 from .models import User
+from .tasks import send_activation_email_task
 from .tokens import user_email_activation_token
-from .utils import send_activation_email
 
 
 class JoinUserView(View):
@@ -28,10 +28,12 @@ class JoinUserView(View):
             new_user.set_password(form.cleaned_data['password'])
             new_user.is_active = False
             new_user.save()
-            send_activation_email(request, new_user)
+            site = get_current_site(request)
+            send_activation_email_task.delay(
+                new_user.id, request.is_secure(), site.name, site.domain)
 
             profile = Profile.objects.create(user=new_user)
-            
+
             messages.success(request,
                              _('Successfully created your account. \
                                 for activating it check your email'))
@@ -79,7 +81,9 @@ class ResendEmailActivationCodeView(View):
                 email_for_activation = form.cleaned_data['email']
                 user = User.objects.get(email=email_for_activation)
                 if not user.email_confirmed:
-                    send_activation_email(request, user)
+                    site = get_current_site(request)
+                    send_activation_email_task.delay(
+                        user.id, request.is_secure(), site.name, site.domain)
                     messages.success(request, _(
                         'Please check your email. We sent an activation link'))
                     return HttpResponseRedirect('/')

@@ -6,18 +6,21 @@ from django.utils.http import urlsafe_base64_encode
 from byteland.core.utils import send_mail
 
 from .tokens import user_email_activation_token
+from .models import User
 
 
-def send_activation_email(request, user):
-    current_site = get_current_site(request)
-    use_https = request.is_secure()
+def send_activation_email(user_id, use_https, site_name, site_domain):
+    """
+    Use celery to send email
+    """
+    user = User.objects.get(pk=user_id)
     email = settings.BYTELAND.get('INFO_EMAIL', 'info@byteland.ir')
-    send_mail('authentication/email_confirmed_subject.txt',
+    return send_mail('authentication/email_confirmed_subject.txt',
               'authentication/email_confirmed_template.html',
               {
-                  'sitename': current_site.name,
+                  'sitename': site_name,
                   'protocol': 'https' if use_https else 'http',
-                  'domain': current_site.domain,
+                  'domain': site_domain,
                   'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                   'token': user_email_activation_token.make_token(user),
               },
