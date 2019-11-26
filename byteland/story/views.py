@@ -99,7 +99,7 @@ class BaseStoryListView(ListView):
 
 class TopStoryListView(BaseStoryListView):
     def get_queryset(self):
-        return Story.stories.order_by('-number_of_votes')
+        return Story.stories.order_by('-rank')
 
 
 class LatestStoryListView(BaseStoryListView):

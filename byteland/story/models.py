@@ -1,3 +1,6 @@
+import pytz
+from datetime import datetime
+
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -31,6 +34,7 @@ class Story(TimeStampedModel):
     number_of_comments = models.IntegerField(default=0)
     number_of_votes = models.IntegerField(default=0)
     url_domain_name = models.CharField(max_length=500, blank=True)
+    rank = models.FloatField(default=0.0)
 
     def __str__(self):
         return self.title
@@ -53,6 +57,17 @@ class Story(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("story:show_story", args=[self.id])
+
+    def calc_rank(self):
+        """
+        Rank = (P-1) / (T+2)^G
+        """
+        diff = datetime.utcnow().replace(tzinfo=pytz.utc) - self.created.togregorian()
+        T = diff.total_seconds() / 60 / 60
+        G = 1.8
+        P = self.number_of_votes
+        self.rank = P / pow((T+2), G)
+        self.save()
 
 
 class StoryComment(TimeStampedModel):
