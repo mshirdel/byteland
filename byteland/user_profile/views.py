@@ -1,5 +1,7 @@
 import uuid
 
+from byteland.authentication.forms import EditUserForm
+from byteland.story.models import Story
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -10,9 +12,6 @@ from django.shortcuts import get_object_or_404, render
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext as _
 from django.views import View
-
-from byteland.authentication.forms import EditUserForm
-from byteland.story.models import Story
 
 from .forms import EditProfileForm
 

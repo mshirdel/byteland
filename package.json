@@ -37,7 +37,7 @@
         "@fortawesome/fontawesome-free": "^5.9.0",
         "bootstrap": "^4.3.1",
         "bootstrap-v4-rtl": "^4.3.1-4",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.1",
         "persian-date": "^1.0.5",
         "persian-datepicker": "^1.1.5",
         "popper.js": "^1.15.0"

@@ -8,12 +8,13 @@ from django.contrib.postgres.search import (SearchQuery, SearchRank,
                                             SearchVector)
 from django.db.models import Count
 from django.http import HttpResponseRedirect, JsonResponse
+from django.http.response import Http404
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext as _
 from django.views import View
 from django.views.generic import ListView
-from django.urls import reverse
 
 from .forms import SearchForm, StoryCommentForm, StoryForm
 from .models import Story, StoryPoint
@@ -119,13 +120,13 @@ class ByDomainStoryListView(BaseStoryListView):
 @method_decorator(login_required, name='dispatch')
 class EditStory(View):
     def get(self, request, id):
-        story = get_object_or_404(Story, pk=id)
+        story = get_object_or_404(request.user.stories, pk=id)
         form = StoryForm(instance=story)
         return render(request, 'story/edit.html',
                       {'form': form, 'id': id})
 
     def post(self, request, id):
-        story = get_object_or_404(Story, pk=id)
+        story = get_object_or_404(request.user.stories, pk=id)
         form = StoryForm(request.POST, instance=story)
         if form.is_valid():
             story.save()
@@ -182,14 +183,14 @@ def story_search(request):
             search_query = SearchQuery(query)
             results = Story.stories.annotate(
                 search=search_vector,
-                rank=SearchRank(search_vector, search_query)
-            ).filter(search=search_query).order_by('-rank')
+                search_rank=SearchRank(search_vector, search_query)
+            ).filter(search=search_query).order_by('-search_rank')
     context = {'query': query, 'results': results}
     return render(request, 'story/search_result.html', context)
 
 
 def story_delete(request, id, page):
-    story = get_object_or_404(Story, pk=id)
+    story = get_object_or_404(request.user.stories, pk=id)
     story.delete()
     if page == 'profile':
         return HttpResponseRedirect(reverse('user_profile:profile'))

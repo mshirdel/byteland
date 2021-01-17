@@ -105,3 +105,4 @@ assets/bundles/
 celerybeat-schedule.bak
 celerybeat-schedule.dat
 celerybeat-schedule.dir
+.jython_cache
